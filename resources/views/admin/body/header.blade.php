@@ -10,6 +10,8 @@
     <title>Musculean | Admin</title>
     <link href="{{ asset('assets/css/styles.css')}}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -27,9 +29,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/js/datatables-simple-demo.js')}}"></script>
+    crossorigin="anonymous"></script>
+
+    <!-- DateTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('assets/js/sweat-alertDelete.js') }}"></script>
 </body>
 
 </html>
+
+<script>
+$(document).ready(function() {
+    $('#memberTable').DataTable();
+});
+
+$(document).ready(function() {
+    $('#packageTable').DataTable({
+        pageLength: 5
+    });
+});
+
+$(document).ready(function() {
+    $('#planTable').DataTable({
+        pageLength: 5
+    });
+});
+
+@if(Session::has('message'))
+var type = "{{ Session::get('alert-type','info') }}"
+switch (type) {
+    case 'info':
+        toastr.info(" {{ Session::get('message') }} ");
+        break;
+
+    case 'success':
+        toastr.success(" {{ Session::get('message') }} ");
+        break;
+
+    case 'warning':
+        toastr.warning(" {{ Session::get('message') }} ");
+        break;
+
+    case 'error':
+        toastr.error(" {{ Session::get('message') }} ");
+        break;
+}
+@endif
+</script>
