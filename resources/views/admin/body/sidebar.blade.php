@@ -18,9 +18,9 @@
                     Plan/Packages
                 </a>
                 <hr>
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('all.trainers') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Charts
+                    Trainer
                 </a>
                 <hr>
                 <a class="nav-link" href="tables.html">

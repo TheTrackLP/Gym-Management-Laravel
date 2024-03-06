@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\BundleController;
+use App\Http\Controllers\Backend\TrainerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,12 +40,19 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(BundleController::class)->group(function(){
+        //Bundles
         Route::get('/admin/bundles', 'AllBundles')->name('all.bundles');
 
         //Plans
         Route::post('/admin/bundles/plans/add', 'AddPlan')->name('add.plans');
         //Packages
         Route::post('/admin/bundles/packages/add', 'AddPackage')->name('add.package');
+    });
+
+    Route::controller(TrainerController::class)->group(function(){
+        Route::get('/admin/trainers', 'AllTrainers')->name('all.trainers');
+        Route::post('/admin/trainers/add', 'AddTrainers')->name('add.trainers');
+        Route::get('/admin/trainers/delete/{id}', 'DeleteTrainers')->name('delete.trainers');
     });
 });
 
