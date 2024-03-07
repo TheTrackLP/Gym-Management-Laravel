@@ -23,9 +23,9 @@
                     Trainer
                 </a>
                 <hr>
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('all.equip') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Tables
+                    Gym Equipments
                 </a>
                 <hr>
             </div>

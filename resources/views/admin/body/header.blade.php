@@ -51,6 +51,10 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+    $('#equipTable').DataTable();
+});
+
+$(document).ready(function() {
     $('#packageTable').DataTable({
         pageLength: 5
     });

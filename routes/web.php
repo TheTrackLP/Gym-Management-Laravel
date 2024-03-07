@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\BundleController;
 use App\Http\Controllers\Backend\TrainerController;
+use App\Http\Controllers\Backend\EquipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/trainers', 'AllTrainers')->name('all.trainers');
         Route::post('/admin/trainers/add', 'AddTrainers')->name('add.trainers');
         Route::get('/admin/trainers/delete/{id}', 'DeleteTrainers')->name('delete.trainers');
+    });
+
+    Route::controller(EquipmentController::class)->group(function(){
+        Route::get('/admin/equipments', 'AllEquipments')->name('all.equip');
+        Route::post('/admin/equipments/add', 'AddEquipment')->name('add.equip');
+        Route::get('/admin/equipments/edit/{id}', 'EditEquipment')->name('edit.equip');
+        Route::post('/admin/equipment/update', 'UpdateEquipment')->name('update.equip');
+        Route::get('/admin/equipment/delete/{id}', 'DeleteEquip')->name('delete.equip');
     });
 });
 
