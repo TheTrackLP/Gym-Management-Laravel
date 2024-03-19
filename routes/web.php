@@ -7,6 +7,8 @@ use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\BundleController;
 use App\Http\Controllers\Backend\TrainerController;
 use App\Http\Controllers\Backend\EquipmentController;
+use App\Http\Controllers\Backend\ExerciseController;
+use App\Http\Controllers\Backend\SplitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +64,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/equipments/edit/{id}', 'EditEquipment')->name('edit.equip');
         Route::post('/admin/equipment/update', 'UpdateEquipment')->name('update.equip');
         Route::get('/admin/equipment/delete/{id}', 'DeleteEquip')->name('delete.equip');
+    });
+
+    Route::controller(ExerciseController::class)->group(function(){
+        Route::get('/admin/exercises', 'AllExercises')->name('all.exercise');
+        Route::post('/admin/exercises/add', 'AddExercise')->name('add.exer');
+        Route::get('/admin/exercises/view/{id}', 'EditExer')->name('edit.exer');
+        Route::get('/admin/exercises/delete/{id}', 'DeleteExer')->name('del.exer');
+    });
+
+    Route::controller(SplitController::class)->group(function(){
+        Route::get('/admin/splits', 'AllSplit')->name('all.split');
+        Route::get('/admin/splits/add', 'AddSplit')->name('add.split');
+        Route::post('/admin/splits/store', 'StoreSplit')->name('store.split');
     });
 });
 

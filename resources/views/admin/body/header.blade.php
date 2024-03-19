@@ -14,6 +14,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
+@php
+$id = Auth::user()->id;
+$profileData = App\Models\User::find($id)
+@endphp
+
 <body class="sb-nav-fixed">
     @include('admin.body.navbar')
     <div id="layoutSidenav">
@@ -64,6 +69,10 @@ $(document).ready(function() {
     $('#planTable').DataTable({
         pageLength: 5
     });
+});
+
+$(document).ready(function() {
+    $('#tableSplit').DataTable();
 });
 
 @if(Session::has('message'))
